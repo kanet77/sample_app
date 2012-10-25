@@ -5,6 +5,7 @@ gem 'bootstrap-sass', '2.0.4'
 gem 'pg', '0.12.2'
 gem 'jquery-rails', '2.0.2'
 gem 'bcrypt-ruby', '3.0.1'
+gem 'awesome_print'
 
 gem 'annotate', '2.5.0', group: :development
 
