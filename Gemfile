@@ -6,6 +6,9 @@ gem 'pg', '0.12.2'
 gem 'jquery-rails', '2.0.2'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'awesome_print'
+gem 'faker', '1.0.1'
+gem 'will_paginate', '3.0.3'
+gem 'bootstrap-will_paginate', '0.0.6'
 
 gem 'annotate', '2.5.0', group: :development
 
