@@ -13,7 +13,7 @@ def fill_in_user(name, email, password, confirmation)
   fill_in "Name",         with: name
   fill_in "Email",        with: email
   fill_in "Password",     with: password
-  fill_in "Confirmation", with: confirmation
+  fill_in "Confirm Password", with: confirmation
 end
 
 RSpec::Matchers.define :have_error_message do |message|

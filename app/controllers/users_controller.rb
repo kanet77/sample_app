@@ -12,10 +12,18 @@ class UsersController < ApplicationController
   end
 
   def new
+    if signed_in?
+      redirect_to root_path
+      return
+    end
   	@user = User.new
   end
 
   def create
+    if signed_in?
+      redirect_to root_path
+      return
+    end
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
@@ -56,10 +64,12 @@ class UsersController < ApplicationController
 
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_path) unless current_user?(@user)
+      redirect_to root_path unless current_user?(@user)
     end
 
     def admin_user
-      redirect_to(root_path) unless current_user.admin?
+      @user = User.find(params[:id])
+      redirect_to root_path if current_user?(@user)
+      redirect_to root_path unless current_user.admin?
     end
 end
