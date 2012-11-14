@@ -77,6 +77,7 @@ GEM
       spork (>= 0.8.4)
       sys-proctable
     hike (1.2.1)
+    htmlentities (4.3.1)
     i18n (0.6.1)
     journey (1.0.4)
     jquery-rails (2.0.2)
@@ -180,6 +181,7 @@ DEPENDENCIES
   faker (= 1.0.1)
   guard-rspec (= 1.2.1)
   guard-spork (= 1.2.0)
+  htmlentities
   jquery-rails (= 2.0.2)
   pg (= 0.12.2)
   rails (= 3.2.8)
