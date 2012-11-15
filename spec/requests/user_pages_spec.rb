@@ -17,15 +17,17 @@ describe "User pages" do
     it { should have_selector('h1',    text: 'All users') }
 
     describe "pagination" do
-
-      before(:all) { 30.times { FactoryGirl.create(:user) } }
+      before(:all) { (User.per_page + 1).times { FactoryGirl.create(:user) } }
       after(:all)  { User.delete_all }
 
       it { should have_selector('div.pagination') }
 
       it "should list each user" do
-        User.paginate(page: 1).each do |user|
-          page.should have_selector('li', text: user.name)
+        for i in (1..(User.count/Float(User.per_page)).ceil) do
+          visit users_path << "?page=#{i}"
+          User.paginate(page: i).each do |user|
+            page.should have_selector('li', text: user.name)
+          end
         end
       end
     end

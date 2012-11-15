@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'active_support/inflector'
 
 describe "Static pages" do
 
@@ -31,6 +32,12 @@ describe "Static pages" do
           page.should have_selector("li##{item.id}", text: item.content)
         end
       end
+
+      it "should show micropost count" do
+        num_posts = user.microposts.count
+        page.should have_content( num_posts.to_s << " micropost".pluralize(num_posts) )
+      end
+
     end
   end
 
