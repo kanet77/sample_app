@@ -1,7 +1,17 @@
 <%= form_for(@micropost) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-    <%= f.text_area :content, placeholder: "Compose new micropost...", rows:5 %>
+    <%= f.text_area :content, placeholder: "Compose new micropost...", rows:5, autofocus: true, onChange: "checkLength(this, $('.countdown'))", onKeyUp: "checkLength(this, $('.countdown'))", maxlength: Micropost::MAX_LENGTH %>
   </div>
+	<span class="countdown" name="countdown"><%= Micropost::MAX_LENGTH %> characters remaining</span>
   <%= f.submit "Post", class: "btn btn-large btn-primary" %>
 <% end %>
+
+<script language="javascript" type="text/javascript">
+function checkLength(field, countdown)
+{
+  maxLen = parseInt(field.getAttribute('maxlength'));
+  curLen = field.value.length;
+	countdown.text((maxLen-curLen) + " characters remaining");
+};
+</script>
